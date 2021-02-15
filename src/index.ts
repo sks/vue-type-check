@@ -23,18 +23,20 @@ interface Options {
   onlyTemplate?: boolean;
   onlyTypeScript?: boolean;
   excludeDir?: string|string[];
+  failExit?: boolean;
 }
 
 interface Source {
   docs: TextDocument[];
   workspace: string;
   onlyTemplate: boolean;
+  failExit: boolean;
 }
 
 let validLanguages = ["vue"];
 
 export async function check(options: Options) {
-  const { workspace, onlyTemplate = false, onlyTypeScript = false, excludeDir } = options;
+  const { workspace, onlyTemplate = false, onlyTypeScript = false, excludeDir, failExit = false } = options;
   if (onlyTypeScript) {
     validLanguages = ["ts", "tsx", "vue"];
   }
@@ -42,7 +44,7 @@ export async function check(options: Options) {
   const excludeDirs = typeof excludeDir === "string" ? [excludeDir] : excludeDir;
   const docs = await traverse(srcDir, onlyTypeScript, excludeDirs);
 
-  await getDiagnostics({ docs, workspace, onlyTemplate });
+  await getDiagnostics({ docs, workspace, onlyTemplate, failExit });
 }
 
 async function traverse(
@@ -91,7 +93,7 @@ async function traverse(
   return docs;
 }
 
-async function getDiagnostics({ docs, workspace, onlyTemplate }: Source) {
+async function getDiagnostics({ docs, workspace, onlyTemplate, failExit }: Source) {
   const documentRegions = getLanguageModelCache(10, 60, (document) =>
     getVueDocumentRegions(document)
   );
@@ -151,6 +153,10 @@ async function getDiagnostics({ docs, workspace, onlyTemplate }: Source) {
             }
           }
         }
+      }
+      if (failExit) {
+          printMessage('Please run command locally to see the full list');
+          break;
       }
       bar.tick();
     }

@@ -9,6 +9,7 @@ const {
   onlyTemplate,
   onlyTypeScript,
   excludeDir,
+  failExit,
 } = minimist(process.argv.slice(2));
 
 if (!workspace) {
@@ -23,4 +24,5 @@ check({
   onlyTemplate,
   onlyTypeScript,
   excludeDir,
+  failExit,
 });
