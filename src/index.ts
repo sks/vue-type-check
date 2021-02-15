@@ -154,11 +154,11 @@ async function getDiagnostics({ docs, workspace, onlyTemplate, failExit }: Sourc
           }
         }
       }
-      if (failExit) {
+      bar.tick();
+      if (hasError && failExit) {
           printMessage('Please run command locally to see the full list');
           break;
       }
-      bar.tick();
     }
   } catch (error) {
     hasError = true;
