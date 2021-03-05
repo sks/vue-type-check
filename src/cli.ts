@@ -10,6 +10,7 @@ const {
   onlyTypeScript,
   excludeDir,
   failExit,
+  _,
 } = minimist(process.argv.slice(2));
 
 if (!workspace) {
@@ -25,4 +26,5 @@ check({
   onlyTypeScript,
   excludeDir,
   failExit,
+  files: (_ || []).map((file) => path.resolve(cwd, file)),
 });
