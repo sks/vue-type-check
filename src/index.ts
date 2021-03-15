@@ -170,7 +170,9 @@ async function getDiagnostics({ docs, workspace, onlyTemplate, failExit }: Sourc
     } finally {
         documentRegions.dispose();
         scriptRegionDocuments.dispose();
-        printMessage(`Found: ${totalErrors} errors in ${docs.length} file(s)`);
+        if (!failExit) {
+            printMessage(`Found: ${totalErrors} errors in ${docs.length} file(s)`);
+        }
         process.exit(hasError ? 1 : 0);
     }
 }
