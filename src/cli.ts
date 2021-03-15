@@ -4,27 +4,27 @@ import minimist from "minimist";
 import { check } from "./index";
 
 const {
-  workspace,
-  srcDir,
-  onlyTemplate,
-  onlyTypeScript,
-  excludeDir,
-  failExit,
-  _,
+    workspace,
+    srcDir,
+    onlyTemplate,
+    onlyTypeScript,
+    excludeDir,
+    failExit,
+    _,
 } = minimist(process.argv.slice(2));
 
 if (!workspace) {
-  throw new Error("--workspace is required");
+    throw new Error("--workspace is required");
 }
 
 const cwd = process.cwd();
 
 check({
-  workspace: path.resolve(cwd, workspace),
-  srcDir: srcDir && path.resolve(cwd, srcDir),
-  onlyTemplate,
-  onlyTypeScript,
-  excludeDir,
-  failExit,
-  files: (_ || []).map((file) => path.resolve(cwd, file)),
+    workspace: path.resolve(cwd, workspace),
+    srcDir: srcDir && path.resolve(cwd, srcDir),
+    onlyTemplate,
+    onlyTypeScript,
+    excludeDir,
+    failExit,
+    files: (_ || []).map((file) => path.resolve(cwd, file)),
 });
