@@ -104,6 +104,7 @@ async function getDiagnostics({ docs, workspace, onlyTemplate, failExit }: Sourc
         return vueDocument.getSingleTypeDocument("script");
     });
     let hasError = false;
+    let totalErrors = 0;
     try {
         const serviceHost = getServiceHost(
             tsModule,
@@ -130,6 +131,7 @@ async function getDiagnostics({ docs, workspace, onlyTemplate, failExit }: Sourc
             const results = vueTplResults.concat(scriptResults);
             if (results.length) {
                 hasError = true;
+                totalErrors += results.length;
                 for (const result of results) {
                     const total = doc.lineCount;
                     const lines = getLines({
@@ -168,6 +170,7 @@ async function getDiagnostics({ docs, workspace, onlyTemplate, failExit }: Sourc
     } finally {
         documentRegions.dispose();
         scriptRegionDocuments.dispose();
+        printMessage(`Found: ${totalErrors} errors in ${docs.length} file(s)`);
         process.exit(hasError ? 1 : 0);
     }
 }
