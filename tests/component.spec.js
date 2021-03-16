@@ -3,7 +3,7 @@ const path = require("path");
 const { exec } = require("child_process");
 
 const bin = path.resolve(__dirname, "../dist/cli.js");
-const fixtureDir = path.resolve(__dirname, "./fixture");
+const fixtureDir = path.resolve(__dirname, "./components");
 
 const spec = (err, stdout) => {
     assert.equal(Boolean(err), true);

@@ -4,6 +4,7 @@
     "description": "a type checker for typescript written Vue components",
     "main": "dist/index.js",
     "bin": {
+        "vue-type-check-hapyharshit": "dist/cli.js",
         "vtch": "dist/cli.js",
         "vtch-get-exclude": "dist/exclude.js"
     },
