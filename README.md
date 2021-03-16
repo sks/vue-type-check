@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="100px" height="100px" src="https://raw.githubusercontent.com/Yuyz0112/vue-type-check/master/assets/logo.png">
+  <img width="100px" height="100px" src="https://user-images.githubusercontent.com/15089738/111375754-a67f3a80-86c4-11eb-846d-ba33c9e22736.png">
 </p>
 
 # vue-type-check-hapyharshit
@@ -70,7 +70,7 @@ export default Vue.extend({
 </script>
 ```
 
-![example.gif](https://raw.githubusercontent.com/Yuyz0112/vue-type-check/master/assets/vtc.gif)
+![vue-type-check-hapyharshit-usage.gif](https://user-images.githubusercontent.com/15089738/111381717-12b16c80-86cc-11eb-917e-61d5a6e4301d.gif)
 
 ### Programmatical API
 
@@ -93,4 +93,4 @@ const { check } = require("vue-type-check-hapyharshit");
 
 Currently, the implementation is heavily based on vetur's awesome [interpolation feature](https://vuejs.github.io/vetur/interpolation.html).
 
-demo
+
