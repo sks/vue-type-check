@@ -70,7 +70,7 @@ export default Vue.extend({
 </script>
 ```
 
-![vue-type-check-hapyharshit-usage.gif](https://user-images.githubusercontent.com/15089738/111381717-12b16c80-86cc-11eb-917e-61d5a6e4301d.gif)
+![vue-type-check-hapyharshit](https://user-images.githubusercontent.com/15089738/111383970-f662ff00-86ce-11eb-8d02-aa4072acdd1e.gif)
 
 ### Programmatical API
 
